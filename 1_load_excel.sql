@@ -1,6 +1,6 @@
 SET LOADFORMAT XLSX
 
-LOAD TABLE yh_resultat 'resultat-ansokningsomgang-2025.xltx' NEW
+LOAD TABLE resultat_2025 'resultat-ansokningsomgang-2025.xlsx' NEW
 
 COMMIT;
 
