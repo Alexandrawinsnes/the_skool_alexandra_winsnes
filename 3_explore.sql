@@ -57,17 +57,22 @@ ORDER BY beviljandegrad DESC, ansökningar DESC;
 
 
 
--- Vilka utbildningar har högst beviljandegrad gällande utbildningsområde och utbildningslängd
+-- Påverkar utbildningens längd chansen till en beviljad utnildning?
 
-SELECT UTBILDNINGSOMRÅDE, YH_POÄNG,
+SELECT UTBILDNINGSLÄNGD,
     COUNT(*) AS ansökningar,
     SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad
+    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad FROM (
+SELECT BESLUT,
+    CASE
+        WHEN YH_POÄNG BETWEEN 100 AND 199 THEN '100-199 YH-poäng'
+        WHEN YH_POÄNG BETWEEN 200 AND 399 THEN '200-399 YH-poäng'
+        WHEN YH_POÄNG BETWEEN 400 AND 600 THEN '400-600 YH-poäng'        
+    END AS UTBILDNINGSLÄNGD
 FROM resultat_2025
-WHERE YH_POÄNG IS NOT NULL
-GROUP BY UTBILDNINGSOMRÅDE, YH_POÄNG
-ORDER BY beviljandegrad DESC, ansökningar DESC
-FETCH FIRST 10 ROWS ONLY;
+WHERE YH_POÄNG BETWEEN 100 AND 600)
+GROUP BY UTBILDNINGSLÄNGD
+ORDER BY beviljandegrad DESC;
 
 
 
