@@ -1,6 +1,8 @@
 SET PAGESIZE 2000
 SET LINESIZE 200
 
+
+
 -- Vilka utbildningsområden har högst beviljandegrad?
 
 SELECT UTBILDNINGSOMRÅDE,
@@ -12,7 +14,8 @@ GROUP BY UTBILDNINGSOMRÅDE
 ORDER BY beviljandegrad DESC;
 
 
--- Hur skiljer sig antalet beviljade utbildningar från antalet avslagna utbildningar mellan olika studueformer?
+
+-- Hur skiljer sig antalet beviljade utbildningar från antalet avslagna utbildningar mellan olika studieformer?
 
 SELECT STUDIEFORM,
     COUNT(*) AS ansökningar,
@@ -39,6 +42,7 @@ HAVING COUNT(*) >= 10
 ORDER BY beviljandegrad DESC, ansökningar DESC;
 
 
+
 -- Vilka specifika platsbunda utbildningar har högst beviljandegrad?
 
 SELECT UTBILDNINGSNAMN, UTBILDNINGSOMRÅDE,
@@ -47,9 +51,23 @@ SELECT UTBILDNINGSNAMN, UTBILDNINGSOMRÅDE,
     ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad
 FROM resultat_2025
 WHERE STUDIEFORM = 'Bunden'
-HAVING COUNT(*) >= 3
 GROUP BY UTBILDNINGSNAMN, UTBILDNINGSOMRÅDE
-ORDER BY beviljandegrad DESC, beviljade DESC;
+HAVING COUNT(*) >= 3
+ORDER BY beviljandegrad DESC, ansökningar DESC;
+
+
+
+-- Vilka utbildningar har högst beviljandegrad gällande utbildningsområde och utbildningslängd
+
+SELECT UTBILDNINGSOMRÅDE, YH_POÄNG,
+    COUNT(*) AS ansökningar,
+    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
+    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad
+FROM resultat_2025
+WHERE YH_POÄNG IS NOT NULL
+GROUP BY UTBILDNINGSOMRÅDE, YH_POÄNG
+ORDER BY beviljandegrad DESC, ansökningar DESC
+FETCH FIRST 10 ROWS ONLY;
 
 
 
