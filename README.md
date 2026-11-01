@@ -33,5 +33,15 @@ I denna uppgift har jag användt mig av följande SQL:
 - `UPPER` `TRIM` `REPLACE` `INSTR` och `||` för att kunna hantera text, exempelvis för att kunna hitta ett specifikt ord.
 
 
--- Grundläggande EDA
+Alla frågor finns i `2_select.sql`. Exempel och resultat på några frågor:
+
+```sql
+SELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
+FROM resultat_2025
+GROUP BY UTBILDNINGSOMRÅDE
+ORDER BY antal DESC;
+```
+![Ansökningar per utbildningsområde] (screenshots/Uppgift1a.png)
+
+Ekonomi, Teknik och tillverkning och Data/IT har flest ansökningar.
 
