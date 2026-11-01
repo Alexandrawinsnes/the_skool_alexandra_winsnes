@@ -60,11 +60,11 @@ Dessa frågor är de jag tog med mig från intervjun i uppgift 3
 ## Uppgift 3: Datadrivna beslut
 I denna uppgift har jag användt mig av SQL för att undersöka de frågorna jag tog med mig från intervjun i upgift 2.
 
-Alla frågor finns i `3_explore.sql. Exempel på de viktigaste resultaten jag fick fram:
+Alla frågor finns i `3_explore.sql`. Exempel på de viktigaste resultaten jag fick fram:
 
-![Hur skiljer sig antalet beviljade utbildningar från antalet avslagna utbildningar mellan olika studieformer] (screenshots/Uppgift3_Studieform.png)
+![Studieform](screenshots/Uppgift3_Studieform.png)
 
-![Resultat] (screenshots/Uppgift3_Studieform_Resultat.png)
+![Resultat](screenshots/Uppgift3_Studieform_Resultat.png)
 
 
 
