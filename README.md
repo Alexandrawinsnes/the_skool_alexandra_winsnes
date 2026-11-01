@@ -62,7 +62,7 @@ I denna uppgift har jag användt mig av SQL för att undersöka de frågorna jag
 
 Alla frågor finns i `3_explore.sql`. Exempel på de viktigaste resultaten jag fick fram:
 
-![Studieform](screenshots/Uppgift3_Studieform.png)
+![Studieform](screenshots/Uppgift3_Studieform_Beslut.png)
 
 ![Resultat](screenshots/Uppgift3_Studieform_Resultat.png)
 

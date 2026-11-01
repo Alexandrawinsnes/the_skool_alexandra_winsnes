@@ -7,8 +7,8 @@ SET LINESIZE 200
 
 SELECT UTBILDNINGSOMRÅDE,
     COUNT(*) AS ansökningar,
-    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100, 1) AS beviljandegrad
+    COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1END) AS beviljade,
+    ROUND(COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) / COUNT(*) * 100, 1) AS beviljandegrad
 FROM resultat_2025
 GROUP BY UTBILDNINGSOMRÅDE
 ORDER BY beviljandegrad DESC;
@@ -19,21 +19,20 @@ ORDER BY beviljandegrad DESC;
 
 SELECT STUDIEFORM,
     COUNT(*) AS ansökningar,
-    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    SUM(CASE WHEN BESLUT = 'Avslag' THEN 1 ELSE 0 END) AS avslag,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad
+    COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) AS beviljade,
+    COUNT(CASE WHEN BESLUT = 'Avslag' THEN 1 END) AS avslag,
+    ROUND(COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) / COUNT(*) * 100,1) AS beviljandegrad
 FROM resultat_2025
 GROUP BY STUDIEFORM
 ORDER BY beviljandegrad DESC;
-
 
 
 -- Vilka utbildningsområden och län har högst beviljandegrad för platsbunda utbildningar?
 
 SELECT UTBILDNINGSOMRÅDE, LÄN,
     COUNT(*) AS ansökningar,
-    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100, 1) AS beviljandegrad
+    COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) AS beviljade,
+    ROUND(COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) / COUNT(*) * 100, 1) AS beviljandegrad
 FROM resultat_2025
 WHERE STUDIEFORM = 'Bunden'
 AND LÄN != 'Flera kommuner'
@@ -42,13 +41,12 @@ HAVING COUNT(*) >= 10
 ORDER BY beviljandegrad DESC, ansökningar DESC;
 
 
-
 -- Vilka specifika platsbunda utbildningar har högst beviljandegrad?
 
 SELECT UTBILDNINGSNAMN, UTBILDNINGSOMRÅDE,
     COUNT(*) AS ansökningar,
-    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad
+    COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) AS beviljade,
+    ROUND(COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) / COUNT(*) * 100,1) AS beviljandegrad
 FROM resultat_2025
 WHERE STUDIEFORM = 'Bunden'
 GROUP BY UTBILDNINGSNAMN, UTBILDNINGSOMRÅDE
@@ -61,8 +59,8 @@ ORDER BY beviljandegrad DESC, ansökningar DESC;
 
 SELECT UTBILDNINGSLÄNGD,
     COUNT(*) AS ansökningar,
-    SUM(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) AS beviljade,
-    ROUND(AVG(CASE WHEN BESLUT = 'Beviljad' THEN 1 ELSE 0 END) * 100,1) AS beviljandegrad FROM (
+    COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) AS beviljade,
+    ROUND(COUNT(CASE WHEN BESLUT = 'Beviljad' THEN 1 END) / COUNT(*) * 100,1) AS beviljandegrad FROM (
 SELECT BESLUT,
     CASE
         WHEN YH_POÄNG BETWEEN 100 AND 199 THEN '100-199 YH-poäng'
@@ -73,7 +71,6 @@ FROM resultat_2025
 WHERE YH_POÄNG BETWEEN 100 AND 600)
 GROUP BY UTBILDNINGSLÄNGD
 ORDER BY beviljandegrad DESC;
-
 
 
 EXIT
