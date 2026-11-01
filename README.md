@@ -36,7 +36,7 @@ I denna uppgift har jag användt mig av följande SQL:
 Alla frågor finns i `2_select.sql`. Exempel och resultat:
 
 ```sql
-SELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
+ ELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
 FROM resultat_2025
 GROUP BY UTBILDNINGSOMRÅDE
 ORDER BY antal DESC;
@@ -67,6 +67,9 @@ Alla frågor finns i `3_explore.sql`. Exempel på de viktigaste resultaten jag f
 ![Resultat](screenshots/Uppgift3_Studieform_Resultat.png)
 
 
+Här kan vi se att antal avslag är nästan identiskt för de två studieformerna bunden och distans. Däremot hade studieformen fler ansökningar totalt än distans. Trots att antalet avslag är ungefär lika stort resulterar det i en högre beviljandegrad för bunden. 
+
+Skillanden i beviljandegrad är inte jättestor men resultatet gjorde att jag valde att undersöka studieformen bunden vidare. Jag vill ta reda på vilka utbildingsområden, län ocgh specifika utbildninagr inom bunden som hade bäst resultat. Detta för att kunna få fram möjliga alternativ för The Skool.
 
 
 
