@@ -1,7 +1,7 @@
 # the_skool_alexandra_winsnes
 
 ## Syfte
-Syftet med denna labb är att kunna använda datan SQL för att kunna hjälpa utbildningsanordnaren The Skool att ta fram information om ansökningsomgpngen 2025. Detta för att på så sätt kunna förstå vad som ger störst chans till en beviljad ansökan. Detta ska i sin tur göra det enklare för The Skool att ta beslut om vilka exempelvis utbildningar, studieformer och län de ska satsa på inflr kommande ansökan för att få störst chans till en godkänd ansökan.
+Syftet med denna labb är att kunna använda datan och SQL för att kunna hjälpa utbildningsanordnaren The Skool att ta fram information om ansökningsomgången 2025. Detta för att på så sätt kunna förstå vad som ger störst chans till en beviljad ansökan. Detta ska i sin tur göra det enklare för The Skool att ta beslut om vilka exempelvis utbildningar, studieformer och län de ska satsa på till kommande ansökan för att få störst chans till en godkänd ansökan.
 
 ## Bakgrund
 Datan visar vilka ansökningar som blev beviljade år 2025, datan från ansökningsomgången 2026 ska hjälpa oss få fram vilka utbildningar vi bör presentera fram för The Skool som de ska satsa på i kommande ansökning.
@@ -51,7 +51,7 @@ Jag har därför i uppgift 3 utan att specificera mig på ett specifikt område 
 
 Dessa frågor är de jag tog med mig från intervjun i uppgift 3
 - Vilka område har högst beviljandegrad
-- Hur skiljer sig antalet beviljande utbildningar från antalet avslafna utbildningar mellan de olika studieformer?
+- Hur skiljer sig antalet beviljande utbildningar från antalet avslagna utbildningar mellan de olika studieformer?
 - Vilka utbildningsområden och län har högst beviljandegrad för platsbunda utbildningar?
 - Vilka specifika platsbunda utbildningar har högst beviljandegrad?
 - Påverkar utbildningens längd chansen till en beviljad utbildning?
@@ -69,7 +69,7 @@ Alla frågor finns i `3_explore.sql`. Exempel på de viktigaste resultaten jag f
 
 Här kan vi se att antal avslag är nästan identiskt för de två studieformerna bunden och distans. Däremot hade studieformen fler ansökningar totalt än distans. Trots att antalet avslag är ungefär lika stort resulterar det i en högre beviljandegrad för bunden. 
 
-Skillanden i beviljandegrad är inte jättestor men resultatet gjorde att jag valde att undersöka studieformen bunden vidare. Jag vill ta reda på vilka utbildingsområden, län ocgh specifika utbildninagr inom bunden som hade bäst resultat. Detta för att kunna få fram möjliga alternativ för The Skool.
+Skillanden i beviljandegrad är inte jättestor men resultatet gjorde att jag valde att undersöka studieformen bunden vidare. Jag vill ta reda på vilka utbildingsområden, län och specifika utbildningar inom bunden som hade bäst resultat. Detta för att kunna få fram möjliga alternativ för The Skool.
 
 
 
