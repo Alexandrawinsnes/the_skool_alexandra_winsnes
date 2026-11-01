@@ -18,6 +18,8 @@ ORDER BY column_id;
 
 
 -- Antal ansökningar per utbildningsområde, sorterat på flest ansökningar
+-- COUNT(*) räknar ansökningarna, GROUP BY delar upp de efter utbildningsområde
+-- ORDER BY DESC sorterar
 
 
 SELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
@@ -28,7 +30,7 @@ ORDER BY antal DESC;
 
 
 -- Antal BEVILJADE ansökningar per utbildningsområde
-
+-- WHERE filtrerar fram korrekt kolumn
 
 SELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
 FROM resultat_2025
@@ -51,12 +53,13 @@ ORDER BY antal DESC;
 
 -- Antal BEVILJADE ansökningar per utbildningsnamn inom Data/IT
 
-
+-- Hämtar utbildningsnamnet
 SELECT MIN(UTBILDNINGSNAMN) AS utbildningsnamn, 
     COUNT(*) AS antal
 FROM resultat_2025
 WHERE UTBILDNINGSOMRÅDE = 'Data/IT'
     AND BESLUT = 'Beviljad'
+-- Hantera skillander i bokstäver och mellanslag
 GROUP BY UPPER(TRIM(UTBILDNINGSNAMN))
 ORDER BY antal DESC;
 
@@ -82,9 +85,10 @@ SELECT UTBILDNINGSANORDNARE_ADMINISTR, UTBILDNINGSNAMN, COUNT(*) AS antal
 FROM resultat_2025
 WHERE UTBILDNINGSOMRÅDE = 'Data/IT'
     AND BESLUT = 'Beviljad'
+-- Grupperar efter administrativ enhet och utbildningsnamn
 GROUP BY UTBILDNINGSANORDNARE_ADMINISTR, UTBILDNINGSNAMN
 ORDER BY antal DESC;
-
+--Få fram totalt antal beviljade ansökningar per administrativ enget inom Data/IT
 SELECT UTBILDNINGSANORDNARE_ADMINISTR,
     COUNT(*) AS totalt_beviljade
 FROM resultat_2025
@@ -101,15 +105,17 @@ ORDER BY totalt_beviljade DESC;
 SELECT LÄN, COUNT(*) AS antal
 FROM resultat_2025
 WHERE BESLUT = 'Beviljad'
+-- Tar bort flera kommuner
     AND LÄN != 'Flera kommuner'
 GROUP BY LÄN
 ORDER BY antal DESC
+-- Visar de 5 län med flest ansökningar
 FETCH FIRST 5 ROWS ONLY;
 
 
 
 -- Andel distans och andel bundna utbildningar inom respektive utbildingsområde 
-
+-- Räknar ut andelen i procent och avrundar till decimal
 
 SELECT UTBILDNINGSOMRÅDE,
     ROUND(AVG(CASE
@@ -128,9 +134,10 @@ ORDER BY UTBILDNINGSOMRÅDE;
 
 -- Antal utbildningar som innehåller ordet AI
 
-SELECT UTBILDNINGSNAMN
+
+SELECT COUNT(UTBILDNINGSNAMN) AS antal
 FROM resultat_2025
-WHERE INSTR(' ' || REPLACE(REPLACE(UPPER(UTBILDNINGSNAMN), '-', ' '), ',', '') || '     ', ' AI ') > 0
-ORDER BY UTBILDNINGSNAMN;
+WHERE UTBILDNINGSNAMN LIKE '%AI%';
+
 
 EXIT 
