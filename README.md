@@ -33,7 +33,7 @@ I denna uppgift har jag användt mig av följande SQL:
 - `UPPER` `TRIM` `REPLACE` `INSTR` och `||` för att kunna hantera text, exempelvis för att kunna hitta ett specifikt ord.
 
 
-Alla frågor finns i `2_select.sql`. Exempel och resultat på några frågor:
+Alla frågor finns i `2_select.sql`. Exempel och resultat:
 
 ```sql
 SELECT UTBILDNINGSOMRÅDE, COUNT(*) AS antal
@@ -44,4 +44,33 @@ ORDER BY antal DESC;
 ![Ansökningar per utbildningsområde] (screenshots/Uppgift1a.png)
 
 Ekonomi, Teknik och tillverkning och Data/IT har flest ansökningar.
+
+## Uppgift 2: intervjua domänexperten
+Det viktigaste jag tar med mig från intervjun är att The Skool är öppna för möjligheter när det gäller utbildingens studeform, geografiska placering och utbildningsområde. 
+Jag har därför i uppgift 3 utan att specificera mig på ett specifikt område försökt få fram så mycket information som möjligt för att få fram ett tydligt resultat
+
+Dessa frågor är de jag tog med mig från intervjun i uppgift 3
+- Vilka område har högst beviljandegrad
+- Hur skiljer sig antalet beviljande utbildningar från antalet avslafna utbildningar mellan de olika studieformer?
+- Vilka utbildningsområden och län har högst beviljandegrad för platsbunda utbildningar?
+- Vilka specifika platsbunda utbildningar har högst beviljandegrad?
+- Påverkar utbildningens längd chansen till en beviljad utbildning?
+
+
+## Uppgift 3: Datadrivna beslut
+I denna uppgift har jag användt mig av SQL för att undersöka de frågorna jag tog med mig från intervjun i upgift 2.
+
+Alla frågor finns i `3_explore.sql. Exempel på de viktigaste resultaten jag fick fram:
+
+![Hur skiljer sig antalet beviljade utbildningar från antalet avslagna utbildningar mellan olika studieformer] (screenshots/Uppgift3_Studieform.png)
+
+![Resultat] (screenshots/Uppgift3_Studieform_Resultat.png)
+
+
+
+
+
+
+
+
 
