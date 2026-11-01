@@ -41,7 +41,7 @@ FROM resultat_2025
 GROUP BY UTBILDNINGSOMRÅDE
 ORDER BY antal DESC;
 ```
-![Ansökningar per utbildningsområde] (screenshots/Uppgift1a.png)
+![Ansökningar per utbildningsområde](screenshots/Uppgift1a.png)
 
 Ekonomi, Teknik och tillverkning och Data/IT har flest ansökningar.
 
