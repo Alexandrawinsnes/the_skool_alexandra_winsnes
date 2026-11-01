@@ -75,7 +75,11 @@ WHERE UTBILDNINGSOMRÅDE = 'Data/IT'
     AND BESLUT = 'Avslag'
 GROUP BY UPPER(TRIM(UTBILDNINGSNAMN))
 ORDER BY antal DESC;
-
+-- Räknar ut antal endast
+SELECT COUNT(*) AS total_avslag
+FROM resultat_2025
+WHERE UTBILDNINGSOMRÅDE = 'Data/IT'
+    AND BESLUT = 'Avslag';
 
 
 -- Antal BEVILJADE ansökningar per utbildningsanordnare administrativ enhet & utbildningsnamn, inom Data/IT
